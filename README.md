@@ -1,2 +1,2 @@
 # Leetcode
-leetcode solutions using python
+leetcode solutions
