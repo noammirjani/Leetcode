@@ -14,7 +14,14 @@ class Solution:
         #     else:
         #         values[num] = False
         # return False
-        
+
+    # def containsDuplicate(self, nums: List[int]) -> bool:
+    #     nums.sort()
+    #     for i in range(1, len(nums)):
+    #         if nums[i-1] == nums[i]:
+    #             return True
+    #     return False
+
 
 if __name__ == '__main__':
     s = Solution()
