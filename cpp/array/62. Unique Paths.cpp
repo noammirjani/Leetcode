@@ -4,12 +4,7 @@ using namespace std;
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<vector<int>> options;
-        
-        for (int i = 0; i < m; i++){
-            vector<int> temp (n, 1);
-            options.push_back(temp);
-        }
+        vector<vector<int>> options(m, vector<int>(n, 1));
 
         for (int i = 1; i < m; i++){
             for (int j = 1; j < n; j++) {

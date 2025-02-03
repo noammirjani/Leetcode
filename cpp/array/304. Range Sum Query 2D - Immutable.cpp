@@ -4,25 +4,25 @@ using namespace std;
 //better solution
 class NumMatrix {
 private:
-     vector<vector<int>> sums;
+     vector<vector<int>> m_sums;
 
 public:
-    NumMatrix(vector<vector<int>>& matrix) {
-        int m = matrix.size()+1;
-        int n = matrix[0].size()+1;
-        sums.resize(m, vector<int>(n, 0));
-        sums[0][0] = matrix[0][0];
+   NumMatrix(vector<vector<int>>& matrix) {
+        // init matrix 
+        int m = matrix.size()+1, n = matrix[0].size()+1;
+        m_sums.resize(m, vector<int>(n, 0));
 
-        for (int i = 1; i < m; i++){
-            for (int j = 1; j < n; j++){
-                sums[i][j] = sums[i-1][j] + sums[i][j-1] - sums[i-1][j-1] + matrix[i-1][j-1];
+        //calc sum of each cell 
+        for(int i = 1; i < m; i++){
+            for(int j = 1; j < n; j++){
+                m_sums[i][j] = m_sums[i][j-1] + m_sums[i-1][j] - m_sums[i-1][j-1] + matrix[i-1][j-1];
             }
         }
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
-        row1++; row2++; col1++; col2++;
-        return sums[row2][col2] - sums[row1-1][col2] - sums[row2][col1-1] + sums[row1-1][col1-1]; 
+        row1++; col1++; row2++; col2++;
+        return m_sums[row2][col2] - m_sums[row2][col1-1] - m_sums[row1-1][col2] + m_sums[row1-1][col1-1];
     }
 };
 

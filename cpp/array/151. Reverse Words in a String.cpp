@@ -6,31 +6,25 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        // trim string - clean string [0 : slow]
-        int slow = 0;
-        for (int fast = 0; fast < s.size(); ++fast) {
-            if (s[fast] == ' ') {
-                if (slow > 0 && s[slow - 1] != ' ') s[slow++] = ' ';
-            } else {
-                s[slow++] = s[fast];
+        // trim string 
+        int curr = 0; 
+        for (int i = 0; i < s.size(); i++){
+            if (s[i] != ' ' || (curr > 0 && s[curr-1] != ' ')) s[curr++] = s[i]; 
+        }
+        s.resize(curr > 0  && s[curr-1] == ' ' ? curr-1 : curr);
+
+        //reverse string 
+        reverse(s.begin(), s.end());
+
+        // reverse words
+        int begin = 0;
+        for (int i = 0; i <= s.size(); i++){
+            if(s[i] == ' ' || i == s.size()){
+                reverse(s.begin()+begin, s.begin()+i); 
+                begin = i+1; 
             }
         }
-        if (slow > 0 && s[slow - 1] == ' ') --slow;
-        s.resize(slow);
-
-        // reverse string
-        reverse(s.begin(), s.begin() + slow);
-
-        // reverse word
-        int start = 0;
-        for (int i = 0; i <= s.size(); ++i) {
-            if (s[i] == ' ' || i == s.size()) {
-                reverse(s.begin() + start, s.begin() + i);
-                start = i + 1;
-            }
-        }
-
-        return s;
+        return s; 
     }
 
     string reverseWords2(string s) {
