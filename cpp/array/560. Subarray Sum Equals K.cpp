@@ -18,7 +18,8 @@ public:
         }
         return subarray;
 
-
+        // 1 2 3 4 5  k = 6 subarray=1,1,
+        // 1: 1 3: 1 6: 1 10: 1 15: 1
 
         // brute force - time complexity On^2
         // int current = 0, subarray = 0;
