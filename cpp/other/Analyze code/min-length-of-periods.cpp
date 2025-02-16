@@ -55,8 +55,7 @@ int solution(int n) {
     for (int p = 1; p <= l; ++p) {
         bool ok = true;
         for (int i = 0; i < l - p; ++i) {
-            if (d[i] != d[
-                 + p]) {
+            if (d[i] != d[i+ p]) {
                 ok = false;
                 break;
             }
